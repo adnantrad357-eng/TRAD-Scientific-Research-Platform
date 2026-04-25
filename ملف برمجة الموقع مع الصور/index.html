@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة البحث العلمي | طلاب كلية الاقتصاد</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand"><i class="fas fa-graduation-cap"></i><span>منصة البحث العلمي</span></div>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active"><i class="fas fa-home"></i> الرئيسية</a>
+                <a href="#research" class="nav-link"><i class="fas fa-file-alt"></i> إنشاء بحث</a>
+                <a href="#data-analysis" class="nav-link"><i class="fas fa-chart-line"></i> تحليل البيانات</a>
+                <a href="#statistics" class="nav-link"><i class="fas fa-calculator"></i> اختبارات إحصائية</a>
+                <a href="#survey" class="nav-link"><i class="fas fa-poll"></i> استبيانات</a>
+                <a href="#time-series" class="nav-link"><i class="fas fa-clock"></i> سلاسل زمنية</a>
+                <a href="#kobo" class="nav-link"><i class="fas fa-cloud"></i> KoboToolbox</a>
+                <a href="#developer" class="nav-link"><i class="fas fa-user"></i> عن المطور</a>
+                <a href="#admin" class="nav-link admin-link" id="adminLink" style="display:none;"><i class="fas fa-shield-alt"></i> لوحة التحكم</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-login" id="loginBtn" onclick="showLoginModal()"><i class="fas fa-user"></i> تسجيل الدخول</button>
+                <button class="btn-logout" id="logoutBtn" onclick="logout()" style="display:none;"><i class="fas fa-sign-out-alt"></i> خروج</button>
+                <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-content">
+            <div class="developer-photo" style="margin-bottom:24px;">
+                <img src="assets/images/developer.jpg" alt="المطور" style="width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.3);box-shadow:0 8px 32px rgba(0,0,0,0.3);">
+                <div style="margin-top:12px;color:var(--accent);font-weight:600;font-size:1.1rem;">محمد أحمد</div>
+                <div style="color:var(--gray-light);font-size:0.9rem;">طالب كلية الاقتصاد - جامعة غازي عنتاب</div>
+            </div>
+            <div class="hero-badge"><i class="fas fa-university"></i><span>طلاب كلية الاقتصاد</span></div>
+            <h1 class="hero-title">منصة البحث العلمي المتكاملة <span class="gradient-text">للدراسات الاقتصادية</span></h1>
+            <p class="hero-subtitle">أدوات ذكية لإنشاء أبحاث أكاديمية عميقة، تحليل البيانات، الاختبارات الإحصائية، والاستبيانات — كل ذلك في مكان واحد</p>
+            <div class="hero-stats">
+                <div class="stat-item"><span class="stat-number" data-count="15000">0</span><span class="stat-label">بحث مُنجز</span></div>
+                <div class="stat-item"><span class="stat-number" data-count="8500">0</span><span class="stat-label">طالب مسجل</span></div>
+                <div class="stat-item"><span class="stat-number" data-count="45">0</span><span class="stat-label">مصدر بيانات</span></div>
+                <div class="stat-item"><span class="stat-number" data-count="12">0</span><span class="stat-label">أداة تحليل</span></div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#research" class="btn btn-primary btn-lg"><i class="fas fa-rocket"></i> ابدأ بحثاً جديداً</a>
+                <a href="#data-analysis" class="btn btn-outline btn-lg"><i class="fas fa-chart-pie"></i> حلل بياناتك</a>
+            </div>
+        </div>
+        <div class="hero-scroll"><span>اسحب للأسفل</span><i class="fas fa-chevron-down"></i></div>
+    </section>
+
+    <section class="section research-section" id="research">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">إنشاء بحث</span>
+                <h2 class="section-title">باحث ذكي متكامل</h2>
+                <p class="section-desc">أنشئ بحثاً علمياً أكاديمياً عميقاً وفق منهجية البحث الأكاديمي المعتمدة</p>
+            </div>
+            <div class="research-builder">
+                <div class="builder-sidebar">
+                    <div class="progress-card">
+                        <h4>تقدم البحث</h4>
+                        <div class="progress-ring">
+                            <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" class="progress-bg"/><circle cx="50" cy="50" r="45" class="progress-fill" id="progressCircle"/></svg>
+                            <span class="progress-text" id="progressText">0%</span>
+                        </div>
+                        <div class="progress-steps">
+                            <div class="step active" data-step="1"><i class="fas fa-check"></i> الموضوع</div>
+                            <div class="step" data-step="2"><i class="fas fa-circle"></i> الأسئلة</div>
+                            <div class="step" data-step="3"><i class="fas fa-circle"></i> الفرضيات</div>
+                            <div class="step" data-step="4"><i class="fas fa-circle"></i> الأهداف</div>
+                            <div class="step" data-step="5"><i class="fas fa-circle"></i> المنهجية</div>
+                            <div class="step" data-step="6"><i class="fas fa-circle"></i> الإعدادات</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="builder-form">
+                    <form id="researchForm">
+                        <div class="form-step active" data-step="1">
+                            <h3><i class="fas fa-lightbulb"></i> موضوع البحث</h3>
+                            <div class="form-group">
+                                <label>عنوان البحث <span class="required">*</span></label>
+                                <input type="text" id="researchTitle" placeholder="مثال: تأثير التضخم على النمو الاقتصادي في سوريا 2011-2024" required>
+                                <small>أدخل عنواناً واضحاً ومحدداً</small>
+                            </div>
+                            <div class="form-group">
+                                <label>وصف موجز</label>
+                                <textarea id="researchDesc" rows="3" placeholder="وصف مختصر لموضوع البحث..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>المجال الدراسي</label>
+                                <select id="researchField">
+                                    <option value="macro">اقتصاد كلي</option>
+                                    <option value="micro">اقتصاد جزئي</option>
+                                    <option value="development">تنمية اقتصادية</option>
+                                    <option value="finance">مالية عامة</option>
+                                    <option value="trade">تجارة دولية</option>
+                                    <option value="labor">اقتصاد العمل</option>
+                                    <option value="monetary">سياسة نقدية</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-step" data-step="2">
+                            <h3><i class="fas fa-question-circle"></i> أسئلة البحث</h3>
+                            <div class="dynamic-list" id="questionsList">
+                                <div class="list-item">
+                                    <input type="text" placeholder="سؤال البحث الرئيسي..." class="question-input">
+                                    <button type="button" class="btn-icon" onclick="removeItem(this)"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary" onclick="addQuestion()"><i class="fas fa-plus"></i> إضافة سؤال فرعي</button>
+                        </div>
+                        <div class="form-step" data-step="3">
+                            <h3><i class="fas fa-flask"></i> الفرضيات</h3>
+                            <div class="dynamic-list" id="hypothesesList">
+                                <div class="list-item">
+                                    <input type="text" placeholder="الفرضية الأساسية..." class="hypothesis-input">
+                                    <select class="hypothesis-type"><option value="main">رئيسية</option><option value="sub">فرعية</option></select>
+                                    <button type="button" class="btn-icon" onclick="removeItem(this)"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary" onclick="addHypothesis()"><i class="fas fa-plus"></i> إضافة فرضية</button>
+                        </div>
+                        <div class="form-step" data-step="4">
+                            <h3><i class="fas fa-bullseye"></i> أهداف البحث</h3>
+                            <div class="dynamic-list" id="objectivesList">
+                                <div class="list-item">
+                                    <input type="text" placeholder="هدف البحث..." class="objective-input">
+                                    <button type="button" class="btn-icon" onclick="removeItem(this)"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary" onclick="addObjective()"><i class="fas fa-plus"></i> إضافة هدف</button>
+                        </div>
+                        <div class="form-step" data-step="5">
+                            <h3><i class="fas fa-microscope"></i> منهجية البحث</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>المنهجية المطلوبة</label>
+                                    <select id="methodology"><option value="quantitative">كمية</option><option value="qualitative">نوعية</option><option value="mixed">مختلطة</option></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>أسلوب الكتابة</label>
+                                    <select id="writingStyle"><option value="academic">أكاديمي رسمي</option><option value="analytical">تحليلي</option><option value="descriptive">وصفي</option></select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>عمق البحث</label>
+                                    <select id="depth"><option value="standard">قياسي</option><option value="deep">عميق</option><option value="comprehensive">شامل جداً</option></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>اللغة</label>
+                                    <select id="language"><option value="ar">العربية</option><option value="en">الإنجليزية</option><option value="tr">التركية</option></select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>عدد المراجع</label>
+                                    <input type="number" id="referencesCount" value="15" min="5" max="100">
+                                </div>
+                                <div class="form-group">
+                                    <label>نمط التوثيق</label>
+                                    <select id="citationStyle"><option value="apa">APA</option><option value="mla">MLA</option><option value="chicago">Chicago</option><option value="harvard">Harvard</option><option value="iso">ISO</option></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-step" data-step="6">
+                            <h3><i class="fas fa-cogs"></i> محتوى إضافي متقدم</h3>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-card"><input type="checkbox" id="includeAbstract" checked><span class="check-icon"><i class="fas fa-check"></i></span><span class="check-text">ملخص Abstract</span></label>
+                                <label class="checkbox-card"><input type="checkbox" id="includeEquations"><span class="check-icon"><i class="fas fa-check"></i></span><span class="check-text">معادلات اقتصادية</span></label>
+                                <label class="checkbox-card"><input type="checkbox" id="includeTables" checked><span class="check-icon"><i class="fas fa-check"></i></span><span class="check-text">جداول بيانات</span></label>
+                                <label class="checkbox-card"><input type="checkbox" id="includeCaseStudies"><span class="check-icon"><i class="fas fa-check"></i></span><span class="check-text">دراسات حالة</span></label>
+                                <label class="checkbox-card"><input type="checkbox" id="includeHypothesisTest"><span class="check-icon"><i class="fas fa-check"></i></span><span class="check-text">اختبار الفرضيات</span></label>
+                                <label class="checkbox-card"><input type="checkbox" id="includeLiterature"><span class="check-icon"><i class="fas fa-check"></i></span><span class="check-text">دراسات سابقة موسعة</span></label>
+                                <label class="checkbox-card"><input type="checkbox" id="includeResults" checked><span class="check-icon"><i class="fas fa-check"></i></span><span class="check-text">نتائج مفصلة</span></label>
+                                <label class="checkbox-card"><input type="checkbox" id="includeConclusions" checked><span class="check-icon"><i class="fas fa-check"></i></span><span class="check-text">استنتاجات وتوصيات</span></label>
+                                <label class="checkbox-card"><input type="checkbox" id="includeLimitations"><span class="check-icon"><i class="fas fa-check"></i></span><span class="check-text">حدود البحث</span></label>
+                                <label class="checkbox-card"><input type="checkbox" id="includeFuture"><span class="check-icon"><i class="fas fa-check"></i></span><span class="check-text">أبحاث مستقبلية</span></label>
+                                <label class="checkbox-card"><input type="checkbox" id="includeGlossary"><span class="check-icon"><i class="fas fa-check"></i></span><span class="check-text">قائمة مصطلحات</span></label>
+                                <label class="checkbox-card"><input type="checkbox" id="includeAppendix"><span class="check-icon"><i class="fas fa-check"></i></span><span class="check-text">ملحق إحصائي</span></label>
+                            </div>
+                            <div class="form-group">
+                                <label>الإطار الزمني</label>
+                                <div class="date-range">
+                                    <input type="number" id="yearFrom" placeholder="من سنة" min="1900" max="2030">
+                                    <span>إلى</span>
+                                    <input type="number" id="yearTo" placeholder="إلى سنة" min="1900" max="2030">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>الإطار الجغرافي</label>
+                                <input type="text" id="geographicScope" placeholder="مثال: سوريا، تركيا، العالم العربي...">
+                            </div>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary" id="prevBtn" onclick="changeStep(-1)" disabled><i class="fas fa-arrow-right"></i> السابق</button>
+                            <button type="button" class="btn btn-primary" id="nextBtn" onclick="changeStep(1)">التالي <i class="fas fa-arrow-left"></i></button>
+                            <button type="submit" class="btn btn-success" id="submitBtn" style="display:none;"><i class="fas fa-paper-plane"></i> إنشاء البحث</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section data-section" id="data-analysis">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">تحليل البيانات</span>
+                <h2 class="section-title">محرك التحليل الإحصائي المتقدم</h2>
+                <p class="section-desc">أدخل بياناتك واحصل على تحليل إحصائي شامل مع رسوم بيانية تفاعلية</p>
+            </div>
+            <div class="analysis-workspace">
+                <div class="input-panel">
+                    <div class="panel-card">
+                        <h4><i class="fas fa-database"></i> مُدخلات البيانات</h4>
+                        <div class="form-group">
+                            <label>التسميات / الزمن (اختياري)</label>
+                            <textarea id="dataLabels" rows="3" placeholder="2019&#10;2020&#10;2021&#10;2022&#10;2023"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>الأرقام <span class="required">*</span></label>
+                            <textarea id="dataValues" rows="6" placeholder="100&#10;150&#10;200&#10;180&#10;250" required></textarea>
+                            <small>رقم في كل سطر، أو مفصولة بفاصلة</small>
+                        </div>
+                        <div class="form-group">
+                            <label>السياق الوصفي</label>
+                            <input type="text" id="dataContext" placeholder="مثال: معدل التضخم السنوي في سوريا (%)">
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="analyzeData()"><i class="fas fa-chart-bar"></i> تحليل البيانات</button>
+                        <button class="btn btn-secondary btn-block" onclick="clearData()"><i class="fas fa-eraser"></i> مسح البيانات</button>
+                    </div>
+                </div>
+                <div class="output-panel">
+                    <div class="panel-card" id="analysisResults" style="display:none;">
+                        <h4><i class="fas fa-chart-pie"></i> النتائج التحليلية</h4>
+                        <div class="metrics-grid">
+                            <div class="metric-card"><i class="fas fa-calculator"></i><span class="metric-value" id="metricMean">-</span><span class="metric-label">المتوسط</span></div>
+                            <div class="metric-card"><i class="fas fa-balance-scale"></i><span class="metric-value" id="metricMedian">-</span><span class="metric-label">الوسيط</span></div>
+                            <div class="metric-card"><i class="fas fa-arrows-alt-h"></i><span class="metric-value" id="metricStd">-</span><span class="metric-label">الانحراف المعياري</span></div>
+                            <div class="metric-card"><i class="fas fa-compress-arrows-alt"></i><span class="metric-value" id="metricVar">-</span><span class="metric-label">التباين</span></div>
+                            <div class="metric-card"><i class="fas fa-sort-amount-up"></i><span class="metric-value" id="metricMax">-</span><span class="metric-label">الأقصى</span></div>
+                            <div class="metric-card"><i class="fas fa-sort-amount-down"></i><span class="metric-value" id="metricMin">-</span><span class="metric-label">الأدنى</span></div>
+                            <div class="metric-card"><i class="fas fa-wave-square"></i><span class="metric-value" id="metricRange">-</span><span class="metric-label">المدى</span></div>
+                            <div class="metric-card"><i class="fas fa-percentage"></i><span class="metric-value" id="metricCV">-</span><span class="metric-label">معامل الاختلاف</span></div>
+                        </div>
+                        <div class="charts-grid">
+                            <div class="chart-container"><h5>السلسلة الزمنية + المتوسط المتحرك</h5><canvas id="timeSeriesChart"></canvas></div>
+                            <div class="chart-container"><h5>التوزيع التكراري (Histogram)</h5><canvas id="histogramChart"></canvas></div>
+                            <div class="chart-container"><h5>Box Plot تفاعلي</h5><canvas id="boxplotChart"></canvas></div>
+                            <div class="chart-container"><h5>الانحدار الخطي + التنبؤ</h5><canvas id="regressionChart"></canvas></div>
+                        </div>
+                        <div class="analysis-table-wrapper">
+                            <h5>جدول التحليل التفصيلي</h5>
+                            <table class="analysis-table" id="analysisTable">
+                                <thead><tr><th>#</th><th>التسمية</th><th>القيمة</th><th>الانحراف عن المتوسط</th><th>Z-Score</th><th>% التغيير</th><th>الحالة</th></tr></thead>
+                                <tbody id="analysisTableBody"></tbody>
+                            </table>
+                        </div>
+                        <div class="ai-analysis" id="aiAnalysis">
+                            <h5><i class="fas fa-brain"></i> التفسير العلمي المفصل</h5>
+                            <div class="ai-content" id="aiAnalysisContent"></div>
+                        </div>
+                        <div class="export-actions">
+                            <button class="btn btn-outline" onclick="exportChart('png')"><i class="fas fa-image"></i> تصدير الرسوم</button>
+                            <button class="btn btn-outline" onclick="exportTable('csv')"><i class="fas fa-file-csv"></i> تصدير CSV</button>
+                            <button class="btn btn-outline" onclick="exportPDF()"><i class="fas fa-file-pdf"></i> تصدير PDF</button>
+                        </div>
+                    </div>
+                    <div class="empty-state" id="emptyState"><i class="fas fa-chart-area"></i><p>أدخل سلسلة أرقام على اليسار ثم اضغط "تحليل البيانات"</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section stats-section" id="statistics">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">اختبارات إحصائية</span>
+                <h2 class="section-title">مختبر الاختبارات الإحصائية المتقدمة</h2>
+                <p class="section-desc">ارتباط، اختبار T، ANOVA، كاي تربيع — مع تفسير علمي تلقائي</p>
+            </div>
+            <div class="stats-tabs">
+                <button class="tab-btn active" onclick="switchTab('correlation')"><i class="fas fa-link"></i> ارتباط بيرسون</button>
+                <button class="tab-btn" onclick="switchTab('ttest')"><i class="fas fa-balance-scale"></i> اختبار T</button>
+                <button class="tab-btn" onclick="switchTab('anova')"><i class="fas fa-layer-group"></i> ANOVA</button>
+                <button class="tab-btn" onclick="switchTab('chisquare')"><i class="fas fa-th"></i> كاي تربيع</button>
+            </div>
+            <div class="tab-content active" id="correlationTab">
+                <div class="stats-form">
+                    <div class="form-row">
+                        <div class="form-group"><label>المتغير X (رقم في كل سطر)</label><textarea id="corrX" rows="8" placeholder="10&#10;20&#10;30&#10;40&#10;50"></textarea></div>
+                        <div class="form-group"><label>المتغير Y (رقم في كل سطر)</label><textarea id="corrY" rows="8" placeholder="15&#10;25&#10;35&#10;45&#10;55"></textarea></div>
+                    </div>
+                    <div class="form-group">
+                        <label>سياق المتغيرات</label>
+                        <div class="form-row"><input type="text" id="corrNameX" placeholder="اسم X: مثال: التضخم"><input type="text" id="corrNameY" placeholder="اسم Y: مثال: البطالة"></div>
+                    </div>
+                    <button class="btn btn-primary" onclick="calculateCorrelation()"><i class="fas fa-calculator"></i> حساب الارتباط</button>
+                </div>
+                <div class="stats-result" id="correlationResult"></div>
+            </div>
+            <div class="tab-content" id="ttestTab">
+                <div class="stats-form">
+                    <div class="form-row">
+                        <div class="form-group"><label>المجموعة A</label><textarea id="ttestA" rows="8"></textarea></div>
+                        <div class="form-group"><label>المجموعة B</label><textarea id="ttestB" rows="8"></textarea></div>
+                    </div>
+                    <div class="form-group"><label>سياق الاختبار</label><input type="text" id="ttestContext" placeholder="مثال: مقارنة معدلات النمو قبل وبعد الإصلاح"></div>
+                    <button class="btn btn-primary" onclick="calculateTTest()"><i class="fas fa-calculator"></i> إجراء اختبار T</button>
+                </div>
+                <div class="stats-result" id="ttestResult"></div>
+            </div>
+            <div class="tab-content" id="anovaTab">
+                <div class="stats-form">
+                    <div class="form-group"><label>المجموعات (كل مجموعة في سطر، القيم مفصولة بفواصل)</label><textarea id="anovaGroups" rows="8" placeholder="10, 12, 11, 13, 12&#10;15, 16, 14, 17, 15&#10;20, 22, 21, 19, 23"></textarea></div>
+                    <div class="form-group"><label>أسماء المجموعات (اختياري)</label><input type="text" id="anovaNames" placeholder="مجموعة أ, مجموعة ب, مجموعة ج"></div>
+                    <button class="btn btn-primary" onclick="calculateANOVA()"><i class="fas fa-calculator"></i> إجراء ANOVA</button>
+                </div>
+                <div class="stats-result" id="anovaResult"></div>
+            </div>
+            <div class="tab-content" id="chisquareTab">
+                <div class="stats-form">
+                    <div class="form-group"><label>جدول التقاطعات</label><textarea id="chiTable" rows="8" placeholder="كل صف في سطر، والقيم مفصولة بفواصل أو مسافات&#10;10  20  15&#10;25  30  20&#10;15  10  25"></textarea></div>
+                    <div class="form-group"><label>سياق الاختبار</label><input type="text" id="chiContext" placeholder="مثال: العلاقة بين التعليم والدخل"></div>
+                    <button class="btn btn-primary" onclick="calculateChiSquare()"><i class="fas fa-calculator"></i> إجراء كاي تربيع</button>
+                </div>
+                <div class="stats-result" id="chisquareResult"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section survey-section" id="survey">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">الاستبيانات</span>
+                <h2 class="section-title">بناء وتحليل الاستبيانات</h2>
+                <p class="section-desc">صمم أسئلة الاستبيان، أدخل الردود، أضف نصوص مقابلات — وتحليل كمي ونوعي متكامل</p>
+            </div>
+            <div class="survey-workspace">
+                <div class="survey-builder">
+                    <div class="panel-card">
+                        <h4><i class="fas fa-clipboard-list"></i> بناء الاستبيان</h4>
+                        <div class="form-group"><label>سياق دراسة الحالة</label><textarea id="surveyContext" rows="3" placeholder="وصف دراسة الحالة..."></textarea></div>
+                        <div class="form-group">
+                            <label>أسئلة الاستبيان (JSON)</label>
+                            <textarea id="surveyQuestions" rows="6" placeholder='[{"question":"ما هو مستوى رضاك؟","type":"likert","options":["غير راضٍ","راضٍ","راضٍ جداً"]}]'></textarea>
+                            <button class="btn btn-sm btn-secondary" onclick="loadSurveyExample()"><i class="fas fa-magic"></i> تحميل مثال</button>
+                        </div>
+                        <div class="form-group">
+                            <label>ردود المشاركين (CSV)</label>
+                            <textarea id="surveyResponses" rows="6" placeholder="اسم,عمر,رضا&#10;أحمد,25,3&#10;محمد,30,2"></textarea>
+                            <button class="btn btn-sm btn-secondary" onclick="loadResponsesExample()"><i class="fas fa-magic"></i> تحميل مثال</button>
+                        </div>
+                        <div class="form-group"><label>نصوص المقابلات النوعية (اختياري)</label><textarea id="surveyInterviews" rows="4" placeholder="نص المقابلة الأولى..."></textarea></div>
+                        <button class="btn btn-primary btn-block" onclick="analyzeSurvey()"><i class="fas fa-chart-pie"></i> تحليل الاستبيان</button>
+                    </div>
+                </div>
+                <div class="survey-results" id="surveyResults">
+                    <div class="empty-state"><i class="fas fa-poll-h"></i><p>أدخل بيانات الاستبيان للحصول على التحليل</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section timeseries-section" id="time-series">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">السلاسل الزمنية</span>
+                <h2 class="section-title">جمع البيانات الزمنية التلقائي</h2>
+                <p class="section-desc">أدخل سياق البيانات ونطاق السنوات، وسيقوم الذكاء الاصطناعي بجمع الأرقام من المصادر المعروفة</p>
+            </div>
+            <div class="timeseries-workspace">
+                <div class="timeseries-form">
+                    <div class="panel-card">
+                        <h4><i class="fas fa-search"></i> البحث عن بيانات</h4>
+                        <div class="form-group"><label>السياق</label><input type="text" id="tsContext" placeholder="مثال: الناتج المحلي الإجمالي لتركيا"></div>
+                        <div class="form-row">
+                            <div class="form-group"><label>من سنة</label><input type="number" id="tsFrom" value="2011" min="1950" max="2030"></div>
+                            <div class="form-group"><label>إلى سنة</label><input type="number" id="tsTo" value="2024" min="1950" max="2030"></div>
+                        </div>
+                        <div class="form-group"><label>وحدة القياس (اختياري)</label><input type="text" id="tsUnit" placeholder="مثال: %, مليار دولار, ليرة"></div>
+                        <div class="preset-datasets">
+                            <label>مجموعات بيانات جاهزة:</label>
+                            <div class="preset-buttons">
+                                <button class="preset-btn" onclick="loadPreset('syria_inflation')"><i class="fas fa-database"></i> التضخم في سوريا</button>
+                                <button class="preset-btn" onclick="loadPreset('turkey_gdp')"><i class="fas fa-database"></i> الناتج المحلي التركي</button>
+                                <button class="preset-btn" onclick="loadPreset('syria_lira')"><i class="fas fa-database"></i> سعر صرف الليرة السورية</button>
+                                <button class="preset-btn" onclick="loadPreset('turkey_inflation')"><i class="fas fa-database"></i> التضخم في تركيا</button>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="fetchTimeSeries()"><i class="fas fa-sync"></i> جلب البيانات</button>
+                    </div>
+                </div>
+                <div class="timeseries-results" id="timeseriesResults">
+                    <div class="empty-state"><i class="fas fa-chart-line"></i><p>اختر مجموعة بيانات أو أدخل سياقاً للبحث</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section kobo-section" id="kobo">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">KoboToolbox</span>
+                <h2 class="section-title">تكامل مباشر مع KoboToolbox</h2>
+                <p class="section-desc">اجلب نماذج الاستبيانات وردودها من حسابك واحصل على تحليل عميق تلقائي</p>
+            </div>
+            <div class="kobo-workspace">
+                <div class="kobo-form">
+                    <div class="panel-card">
+                        <h4><i class="fas fa-plug"></i> الربط مع KoboToolbox</h4>
+                        <div class="form-group"><label>API Token</label><input type="password" id="koboToken" placeholder="ألصق الـ Token هنا"><small>احصل عليه من <a href="https://kf.kobotoolbox.org" target="_blank">kf.kobotoolbox.org</a></small></div>
+                        <div class="form-group"><label>Asset UID</label><input type="text" id="koboUID" placeholder="الجزء بعد /forms/ في الرابط"></div>
+                        <div class="form-group"><label>حد الردود</label><input type="number" id="koboLimit" value="1000" min="1" max="10000"></div>
+                        <button class="btn btn-primary btn-block" onclick="fetchKoboData()"><i class="fas fa-cloud-download-alt"></i> جلب النموذج والردود</button>
+                        <div class="kobo-steps">
+                            <h5>خطوات الربط:</h5>
+                            <ol>
+                                <li>سجّل دخول إلى <a href="https://kf.kobotoolbox.org" target="_blank">kf.kobotoolbox.org</a></li>
+                                <li>انسخ الـ API Token من الإعدادات</li>
+                                <li>افتح المشروع وانسخ الـ Asset UID من الرابط</li>
+                                <li>ألصقهما أعلاه واضغط "جلب"</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="kobo-results" id="koboResults">
+                    <div class="empty-state"><i class="fas fa-cloud"></i><p>أدخل بيانات KoboToolbox للربط</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section admin-section" id="admin" style="display:none;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag admin-tag"><i class="fas fa-shield-alt"></i> لوحة التحكم</span>
+                <h2 class="section-title">إدارة المنصة</h2>
+            </div>
+            <div class="admin-dashboard">
+                <div class="admin-sidebar">
+                    <div class="admin-menu">
+                        <button class="admin-menu-item active" onclick="switchAdminTab('overview')"><i class="fas fa-tachometer-alt"></i> نظرة عامة</button>
+                        <button class="admin-menu-item" onclick="switchAdminTab('users')"><i class="fas fa-users"></i> المستخدمين</button>
+                        <button class="admin-menu-item" onclick="switchAdminTab('researches')"><i class="fas fa-file-alt"></i> الأبحاث</button>
+                        <button class="admin-menu-item" onclick="switchAdminTab('analytics')"><i class="fas fa-chart-bar"></i> الإحصائيات</button>
+                        <button class="admin-menu-item" onclick="switchAdminTab('settings')"><i class="fas fa-cog"></i> الإعدادات</button>
+                    </div>
+                </div>
+                <div class="admin-content">
+                    <div class="admin-tab active" id="adminOverview">
+                        <div class="admin-cards">
+                            <div class="admin-card"><i class="fas fa-users"></i><h3 id="adminUserCount">0</h3><p>مستخدم مسجل</p></div>
+                            <div class="admin-card"><i class="fas fa-file-alt"></i><h3 id="adminResearchCount">0</h3><p>بحث مُنجز</p></div>
+                            <div class="admin-card"><i class="fas fa-chart-line"></i><h3 id="adminAnalysisCount">0</h3><p>تحليل إحصائي</p></div>
+                            <div class="admin-card"><i class="fas fa-clock"></i><h3 id="adminActiveCount">0</h3><p>نشاط اليوم</p></div>
+                        </div>
+                        <div class="admin-chart-container"><h4>نشاط المستخدمين (آخر 7 أيام)</h4><canvas id="adminActivityChart"></canvas></div>
+                    </div>
+                    <div class="admin-tab" id="adminUsers">
+                        <h4>إدارة المستخدمين</h4>
+                        <table class="admin-table" id="usersTable">
+                            <thead><tr><th>المعرف</th><th>البريد</th><th>الاسم</th><th>نوع الحساب</th><th>تاريخ التسجيل</th><th>الإجراءات</th></tr></thead>
+                            <tbody id="usersTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="admin-tab" id="adminResearches">
+                        <h4>الأبحاث المُنجزة</h4>
+                        <table class="admin-table" id="researchesTable">
+                            <thead><tr><th>العنوان</th><th>المستخدم</th><th>المجال</th><th>التاريخ</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
+                            <tbody id="researchesTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="admin-tab" id="adminAnalytics">
+                        <h4>إحصائيات الاستخدام</h4>
+                        <div class="charts-grid">
+                            <div class="chart-container"><h5>الأقسام الأكثر استخداماً</h5><canvas id="sectionsChart"></canvas></div>
+                            <div class="chart-container"><h5>المجالات البحثية</h5><canvas id="fieldsChart"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="admin-tab" id="adminSettings">
+                        <h4>إعدادات المنصة</h4>
+                        <div class="settings-form">
+                            <div class="form-group"><label>اسم المنصة</label><input type="text" id="siteName" value="منصة البحث العلمي"></div>
+                            <div class="form-group"><label>البريد الإداري</label><input type="email" id="adminEmail" placeholder="admin@example.com"></div>
+                            <div class="form-group"><label>الحد الأقصى للمراجع</label><input type="number" id="maxReferences" value="100"></div>
+                            <div class="form-group"><label>تفعيل التسجيل</label><label class="toggle"><input type="checkbox" id="enableRegistration" checked><span class="toggle-slider"></span></label></div>
+                            <button class="btn btn-primary" onclick="saveSettings()"><i class="fas fa-save"></i> حفظ الإعدادات</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- قسم عن المطور -->
+    <section class="section developer-section" id="developer" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(6,182,212,0.1); color: var(--accent);">عن المطور</span>
+                <h2 class="section-title" style="color: white;">من وراء المنصة</h2>
+                <p class="section-desc" style="color: var(--gray-light);">طالب طموح في كلية الاقتصاد يهدف لتسهيل البحث العلمي للزملاء</p>
+            </div>
+            <div style="display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: center; max-width: 900px; margin: 0 auto;">
+                <div style="text-align: center;">
+                    <img src="assets/images/developer.jpg" alt="المطور" style="width: 250px; height: 250px; border-radius: 50%; object-fit: cover; border: 4px solid rgba(6,182,212,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                    <div style="margin-top: 20px;">
+                        <img src="assets/images/university-logo.png" alt="شعار الجامعة" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; margin: 0 5px;">
+                        <img src="assets/images/syria-flag.png" alt="علم سوريا" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; margin: 0 5px; border: 2px solid rgba(255,255,255,0.2);">
+                    </div>
+                </div>
+                <div style="color: var(--gray-light);">
+                    <h3 style="color: white; font-size: 1.8rem; margin-bottom: 16px;">محمد أحمد</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                        طالب في كلية الاقتصاد بجامعة غازي عنتاب، أؤمن بأن التكنولوجيا يمكن أن تُحدث ثورة في طريقة إجراء البحث العلمي. قمت بتطوير هذه المنصة لمساعدة زملائي الطلاب في إنجاز أبحاثهم بكفاءة وإتقان.
+                    </p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <i class="fas fa-university" style="color: var(--accent); font-size: 1.5rem; margin-bottom: 8px; display: block;"></i>
+                            <div style="color: white; font-weight: 600;">جامعة غازي عنتاب</div>
+                            <div style="font-size: 0.85rem;">كلية الاقتصاد</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <i class="fas fa-code" style="color: var(--accent); font-size: 1.5rem; margin-bottom: 8px; display: block;"></i>
+                            <div style="color: white; font-weight: 600;">مطور ويب</div>
+                            <div style="font-size: 0.85rem;">Full Stack Developer</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <i class="fas fa-chart-line" style="color: var(--accent); font-size: 1.5rem; margin-bottom: 8px; display: block;"></i>
+                            <div style="color: white; font-weight: 600;">باحث اقتصادي</div>
+                            <div style="font-size: 0.85rem;">تحليل البيانات</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <i class="fas fa-heart" style="color: var(--accent); font-size: 1.5rem; margin-bottom: 8px; display: block;"></i>
+                            <div style="color: white; font-weight: 600;">سوري</div>
+                            <div style="font-size: 0.85rem;">الجنسية</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px;">
+                        <a href="#" style="width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" style="width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;"><i class="fab fa-github"></i></a>
+                        <a href="#" style="width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                <img src="assets/images/university-logo.png" alt="شعار الجامعة" style="width:60px;height:60px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+                <h3>منصة البحث العلمي</h3>
+                <p>منصة متكاملة لطلاب كلية الاقتصاد لإجراء الأبحاث الأكاديمية والتحليل الإحصائي</p>
+                <div style="margin-top:16px;display:flex;align-items:center;gap:12px;">
+                    <img src="assets/images/developer.jpg" alt="المطور" style="width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.2);">
+                    <div>
+                        <div style="font-weight:600;color:white;">محمد أحمد</div>
+                        <div style="font-size:0.85rem;color:var(--gray-light);">مطور المنصة</div>
+                    </div>
+                </div>
+            </div>
+                <div class="footer-links"><h4>روابط سريعة</h4><a href="#research">إنشاء بحث</a><a href="#data-analysis">تحليل البيانات</a><a href="#statistics">اختبارات إحصائية</a><a href="#survey">استبيانات</a></div>
+                <div class="footer-links"><h4>مصادر البيانات</h4><a href="https://data.worldbank.org" target="_blank">البنك الدولي</a><a href="https://www.imf.org" target="_blank">صندوق النقد</a><a href="https://www.tcmb.gov.tr" target="_blank">البنك المركزي التركي</a><a href="https://www.cbssyr.sy" target="_blank">البنك المركزي السوري</a></div>
+                <div class="footer-contact"><h4>تواصل معنا</h4>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                    <img src="assets/images/developer.jpg" alt="المطور" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.2);">
+                    <div>
+                        <div style="font-weight:600;color:white;">محمد أحمد</div>
+                        <div style="font-size:0.85rem;color:var(--gray-light);">مطور المنصة</div>
+                        <div style="font-size:0.8rem;color:var(--primary-light);margin-top:4px;"><i class="fas fa-code"></i> طالب اقتصاد</div>
+                    </div>
+                </div>
+                <p><i class="fas fa-envelope"></i> support@economics-research.edu</p><p><i class="fas fa-map-marker-alt"></i> جامعة غازي عنتاب</p><div class="social-links"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a></div></div>
+            </div>
+            <div class="footer-bottom"><p>© 2024 منصة البحث العلمي — طلاب كلية الاقتصاد</p><p>تم التطوير باستخدام الذكاء الاصطناعي</p></div>
+        </div>
+    </footer>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-overlay" onclick="closeLoginModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeLoginModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-header"><h3><i class="fas fa-user-circle"></i> تسجيل الدخول</h3></div>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group"><label>البريد الإلكتروني</label><input type="email" id="loginEmail" required placeholder="your@email.com"></div>
+                <div class="form-group"><label>كلمة المرور</label><input type="password" id="loginPassword" required placeholder="••••••••"></div>
+                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> دخول</button>
+            </form>
+            <div class="modal-footer"><p>ليس لديك حساب؟ <a href="#" onclick="showRegisterModal()">سجّل الآن</a></p></div>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-overlay" onclick="closeRegisterModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeRegisterModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-header"><h3><i class="fas fa-user-plus"></i> إنشاء حساب</h3></div>
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group"><label>الاسم الكامل</label><input type="text" id="regName" required placeholder="محمد أحمد"></div>
+                <div class="form-group"><label>البريد الإلكتروني</label><input type="email" id="regEmail" required placeholder="your@email.com"></div>
+                <div class="form-group"><label>كلمة المرور</label><input type="password" id="regPassword" required placeholder="••••••••" minlength="6"></div>
+                <div class="form-group"><label>تأكيد كلمة المرور</label><input type="password" id="regConfirm" required placeholder="••••••••"></div>
+                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> إنشاء حساب</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"><div class="spinner"></div><p>جاري المعالجة...</p></div>
+    </div>
+
+    <script src="js/modules/utils.js"></script>
+    <script src="js/modules/auth.js"></script>
+    <script src="js/modules/research.js"></script>
+    <script src="js/modules/dataAnalysis.js"></script>
+    <script src="js/modules/statistics.js"></script>
+    <script src="js/modules/survey.js"></script>
+    <script src="js/modules/timeseries.js"></script>
+    <script src="js/modules/kobo.js"></script>
+    <script src="js/modules/admin.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
